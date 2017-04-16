@@ -15,10 +15,10 @@ The RapidLogger library is a header-only library.Just copy the folder in your pr
 
 # Usage
 Use RapidLogger in five lines.
-`
+
+~~~cpp
 #include"Logger.h"
 #include"Singleton.h"
-
 int main()
 {
   //Create a singleton logger
@@ -33,4 +33,4 @@ int main()
 	errlog->logInfo("Hello world 0123456789 abcdefghijklmnopqrstuvwxyz");
 	return 0;
 }
-`
+~~~
