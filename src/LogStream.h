@@ -6,13 +6,31 @@
 #include<string>
 #include<cstring>
 
+#include"LogLevel.h"
+#include"Logger.h"
+
 namespace rapidlogger
 {
-	class endlog{};
+#define off_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::OffLevel())
+#define fatal_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::FatalLevel())
+#define error_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::ErrorLevel())
+#define warn_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::WarnLevel())
+#define info_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::InfoLevel())
+#define debug_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::DebugLevel())
+#define all_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::AllLevel())
+#define custome_out(logger,level) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,level)
 
 	class LoggerStream
 	{
 	public:
+		LoggerStream(Logger& _logger,const char * _filename, const char * _function, int _line, const LogLevel& _level)
+			:logger(_logger),file_name(_filename),function(_function),line(_line),level(_level)
+		{
+		}
+		~LoggerStream()
+		{
+			logger.customer(buffer,file_name,function,line,level);
+		}
 		LoggerStream& operator<<(bool v)
 		{
 			buffer.append(v ? "true" : "false");
@@ -104,7 +122,12 @@ namespace rapidlogger
 			return buffer;
 		}
 	protected:
+		const char * file_name;
+		const char * function;
+		int line;
+		const LogLevel& level;
 		std::string buffer;
+		Logger &logger;
 	};
 }
 

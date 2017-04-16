@@ -90,7 +90,7 @@ namespace rapidlogger
 			std::tm *p = std::gmtime(&timep);
 			thread_local int last_sec = p->tm_sec;
 			thread_local std::string time_buf = "";
-			int micros = Time::GetMicros();
+			int64_t micros = Time::GetMicros();
 			if (time_buf.empty() || last_sec != p->tm_sec)
 			{
 				std::stringstream stream;

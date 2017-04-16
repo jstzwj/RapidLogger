@@ -162,6 +162,7 @@ namespace rapidlogger
 			appender->append(buffer);
 			appender->flush();
 			buffer.clear();
+			appender->close();
         }
         /*!
          * \brief setAppender
