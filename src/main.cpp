@@ -1,5 +1,5 @@
-#include"logger.h"
-#include"singleton.h"
+#include"Logger.h"
+#include"Singleton.h"
 
 int main()
 {

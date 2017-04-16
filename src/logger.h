@@ -6,8 +6,8 @@
     This file is distributed under the MIT liscense.
     See LICENSE for details.
 */
-#ifndef LOGGER_H
-#define LOGGER_H
+#ifndef RAPIDLOGGER_LOGGER_H
+#define RAPIDLOGGER_LOGGER_H
 
 #include<string>
 #include<sstream>
@@ -24,11 +24,11 @@
 #include<cassert>
 #include<ctime>
 
-#include"logmsg.h"
-#include"loglayout.h"
-#include"logappender.h"
+#include"LogMsg.h"
+#include"LogLayout.h"
+#include"LogAppender.h"
 #include"LogFilter.h"
-#include"timer.h"
+#include"Timer.h"
 #include"container/linkedblockingqueue.h"
 
 namespace rapidlogger
@@ -233,4 +233,4 @@ namespace rapidlogger
 }
 
 
-#endif // LOGGER_H
+#endif // RAPIDLOGGER_LOGGER_H

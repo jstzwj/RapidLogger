@@ -1,5 +1,5 @@
-#ifndef LOGLEVEL_H
-#define LOGLEVEL_H
+#ifndef RAPIDLOGGER_LOGLEVEL_H
+#define RAPIDLOGGER_LOGLEVEL_H
 
 #include<string>
 
@@ -76,4 +76,4 @@ namespace rapidlogger
 }
 
 
-#endif // LOGLEVEL_H
+#endif // RAPIDLOGGER_LOGLEVEL_H

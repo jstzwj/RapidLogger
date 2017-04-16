@@ -1,10 +1,10 @@
-#ifndef LOGLAYOUT_H
-#define LOGLAYOUT_H
+#ifndef RAPIDLOGGER_LOGLAYOUT_H
+#define RAPIDLOGGER_LOGLAYOUT_H
 
 #include<string>
 #include<regex>
 
-#include"logmsg.h"
+#include"LogMsg.h"
 
 namespace rapidlogger
 {
@@ -118,4 +118,4 @@ namespace rapidlogger
 }
 
 
-#endif // LOGLAYOUT_H
+#endif // RAPIDLOGGER_LOGLAYOUT_H

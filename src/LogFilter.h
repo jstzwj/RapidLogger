@@ -2,7 +2,7 @@
 #ifndef RAPIDLOGGER_LOGFILTER
 #define RAPIDLOGGER_LOGFILTER
 
-#include"loglevel.h"
+#include"LogLevel.h"
 
 namespace rapidlogger
 {

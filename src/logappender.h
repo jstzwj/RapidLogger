@@ -1,5 +1,5 @@
-#ifndef LOGAPPENDER_H
-#define LOGAPPENDER_H
+#ifndef RAPIDLOGGER_LOGAPPENDER_H
+#define RAPIDLOGGER_LOGAPPENDER_H
 
 #include<ostream>
 #include<iostream>
@@ -89,4 +89,4 @@ namespace rapidlogger
 
 }
 
-#endif // LOGAPPENDER_H
+#endif // RAPIDLOGGER_LOGAPPENDER_H

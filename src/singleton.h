@@ -1,5 +1,5 @@
-#ifndef SINGLETON_H
-#define SINGLETON_H
+#ifndef RAPIDLOGGER_SINGLETON_H
+#define RAPIDLOGGER_SINGLETON_H
 
 #include<atomic>
 #include<functional>
@@ -42,4 +42,4 @@ namespace rapidlogger
 }
 
 
-#endif // SINGLETON_H
+#endif // RAPIDLOGGER_SINGLETON_H

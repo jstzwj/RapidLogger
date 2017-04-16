@@ -18,35 +18,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="logappender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="loglayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="loglevel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="logmsg.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="container\arrayblockingqueue.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
     <ClInclude Include="container\linkedblockingqueue.h">
       <Filter>Header Files\container</Filter>
-    </ClInclude>
-    <ClInclude Include="loggertime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="timer.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Timestamp.h">
       <Filter>Header Files</Filter>
@@ -63,12 +39,36 @@
     <ClInclude Include="platform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LogAppender.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoggerTime.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogMsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loggertime.cpp">
+    <ClCompile Include="LoggerTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

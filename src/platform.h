@@ -1,5 +1,5 @@
-#ifndef PLATFORM_H
-#define PLATFORM_H
+#ifndef RAPIDLOGGER_PLATFORM_H
+#define RAPIDLOGGER_PLATFORM_H
 //判断系统
 #ifdef __CYGWIN__
 #define RAPIDLOGGER_OS_CYGWIN 1
@@ -67,32 +67,8 @@
 #	endif
 #endif // RAPIDLOGGER_OS_WINDOWS
 
-
-///vfs标记
-#define RAPIDLOGGERGGER_OPEN_READONLY         0x00000001  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_READWRITE        0x00000002  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_CREATE           0x00000004  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_DELETEONCLOSE    0x00000008  /* VFS only */
-#define RAPIDLOGGER_OPEN_EXCLUSIVE        0x00000010  /* VFS only */
-#define RAPIDLOGGER_OPEN_AUTOPROXY        0x00000020  /* VFS only */
-#define RAPIDLOGGER_OPEN_URI              0x00000040  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_MEMORY           0x00000080  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_MAIN_DB          0x00000100  /* VFS only */
-#define RAPIDLOGGER_OPEN_TEMP_DB          0x00000200  /* VFS only */
-#define RAPIDLOGGER_OPEN_TRANSIENT_DB     0x00000400  /* VFS only */
-#define RAPIDLOGGER_OPEN_MAIN_JOURNAL     0x00000800  /* VFS only */
-#define RAPIDLOGGER_OPEN_TEMP_JOURNAL     0x00001000  /* VFS only */
-#define RAPIDLOGGER_OPEN_SUBJOURNAL       0x00002000  /* VFS only */
-#define RAPIDLOGGER_OPEN_MASTER_JOURNAL   0x00004000  /* VFS only */
-#define RAPIDLOGGER_OPEN_NOMUTEX          0x00008000  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_FULLMUTEX        0x00010000  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_SHAREDCACHE      0x00020000  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_PRIVATECACHE     0x00040000  /* Ok for sqlite3_open_v2() */
-#define RAPIDLOGGER_OPEN_WAL              0x00080000  /* VFS only */
-#define RAPIDLOGGER_OPEN_APPEND     0x00100000  /* Append data to a file atomicly */
-
 ///unused variables
 #define UNUSED(x) (void)x
 
 
-#endif // PLATFORM_H
+#endif // RAPIDLOGGER_PLATFORM_H

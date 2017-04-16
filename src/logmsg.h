@@ -1,5 +1,5 @@
-#ifndef LOGMSG_H
-#define LOGMSG_H
+#ifndef RAPIDLOGGER_LOGMSG_H
+#define RAPIDLOGGER_LOGMSG_H
 
 #include<string>
 #include<sstream>
@@ -7,9 +7,9 @@
 
 
 #include"platform.h"
-#include"loglevel.h"
+#include"LogLevel.h"
 
-#include"loggertime.h"
+#include"LoggerTime.h"
 
 
 
@@ -79,4 +79,4 @@ namespace rapidlogger
 		int line;
     };
 }
-#endif // LOGMSG_H
+#endif // RAPIDLOGGER_LOGMSG_H
