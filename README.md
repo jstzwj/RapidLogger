@@ -18,19 +18,20 @@ Use RapidLogger in five lines.
 
 ~~~cpp
 #include"Logger.h"
+#include"LogStream.h"
 #include"Singleton.h"
 int main()
 {
   //Create a singleton logger
-	rapidlogger::Logger * errlog = &rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
+	rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
   //Set logger name
-	errlog->setName("errlog");
+	errlog.setName("errlog");
   //Set log target
-	errlog->setAppender(rapidlogger::FileAppender("mylog.log"));
+	errlog.setAppender(rapidlogger::FileAppender("mylog.log"));
   //Start async logger
-	errlog->start();
+	errlog.start();
   //Put a log
-	errlog->logInfo("Hello world 0123456789 abcdefghijklmnopqrstuvwxyz");
+	info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz";
 	return 0;
 }
 ~~~
