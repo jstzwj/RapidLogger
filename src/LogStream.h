@@ -11,14 +11,14 @@
 
 namespace rapidlogger
 {
-#define off_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::OffLevel())
-#define fatal_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::FatalLevel())
-#define error_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::ErrorLevel())
-#define warn_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::WarnLevel())
-#define info_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::InfoLevel())
-#define debug_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::DebugLevel())
-#define all_out(logger) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::AllLevel())
-#define custome_out(logger,level) ::rapidlogger::LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,level)
+#define off_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::OffLevel())
+#define fatal_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::FatalLevel())
+#define error_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::ErrorLevel())
+#define warn_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::WarnLevel())
+#define info_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::InfoLevel())
+#define debug_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::DebugLevel())
+#define all_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::AllLevel())
+#define custome_out(logger,level) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,level)
 
 	class LoggerStream
 	{

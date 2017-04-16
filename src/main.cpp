@@ -18,7 +18,7 @@ int main()
 	clock_t start = clock();
 	while (i-->0)
 	{
-		info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
+		rapidlogger::info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
 	}
 	std::cout << "Time used:" << clock() - start << std::endl;
 	system("pause");
