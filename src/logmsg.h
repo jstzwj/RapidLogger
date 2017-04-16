@@ -44,10 +44,10 @@ namespace rapidlogger
         }
         std::string getNewLine()const
         {
-#ifdef MOCORES_OS_WINDOWS
+#ifdef RAPIDLOGGER_OS_WINDOWS
             return "\r\n";
 #endif
-#ifdef MOCORES_OS_LINUX
+#ifdef RAPIDLOGGER_OS_LINUX
             return "\n";
 #endif
         }

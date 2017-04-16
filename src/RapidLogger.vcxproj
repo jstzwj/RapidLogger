@@ -116,6 +116,7 @@
     <ClInclude Include="loglevel.h" />
     <ClInclude Include="logmsg.h" />
     <ClInclude Include="LogStream.h" />
+    <ClInclude Include="platform.h" />
     <ClInclude Include="singleton.h" />
     <ClInclude Include="StringBuffer.h" />
     <ClInclude Include="timer.h" />

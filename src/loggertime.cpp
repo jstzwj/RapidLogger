@@ -2,10 +2,10 @@
 
 namespace rapidlogger
 {
-#ifdef MOCORES_OS_WINDOWS
+#ifdef RAPIDLOGGER_OS_WINDOWS
 #include <windows.h>
 #endif
-#ifdef MOCORES_OS_LINUX
+#ifdef RAPIDLOGGER_OS_LINUX
 #include <time.h>
 #endif
 
@@ -25,7 +25,7 @@ namespace rapidlogger
         tt = (li.QuadPart - EPOCHFILETIME) /10;
         return tt;
     #endif
-    #ifdef MOCORES_OS_LINUX
+    #ifdef RAPIDLOGGER_OS_LINUX
         timeval tv;
         gettimeofday(&tv, 0);
         return (int64_t)tv.tv_sec * 1000000 + (int64_t)tv.tv_usec;
@@ -105,14 +105,17 @@ namespace rapidlogger
 
     std::string Time::getTime()
     {
-        std::string result;
-        std::time_t timep;
-        std::tm *p;
-        std::time(&timep);
-        p = std::gmtime(&timep);
-		result = std::to_string(1900 + (p->tm_year))+ "-"+std::to_string(1 + (p->tm_mon))+
-			"-"+std::to_string(p->tm_mday)+" "+std::to_string(p->tm_hour)+":"+std::to_string(p->tm_min)+
-			":"+std::to_string(p->tm_sec)+ "."+ std::to_string(Time::GetMicros());
-        return result;
+		std::time_t timep = std::time(nullptr);
+		std::tm *p = std::gmtime(&timep);
+		thread_local int last_sec=p->tm_sec;
+		thread_local std::string time_buf ="";
+		int micros = Time::GetMicros();
+		if (time_buf.empty()|| last_sec!=p->tm_sec)
+		{
+			std::stringstream stream;
+			stream << std::put_time(p, ("%F %T."));
+			time_buf = stream.str();
+		}
+		return time_buf + std::to_string(micros);
     }
 }

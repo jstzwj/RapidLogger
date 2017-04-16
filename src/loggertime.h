@@ -1,5 +1,5 @@
-#ifndef MOCORES_TIME_H
-#define MOCORES_TIME_H
+#ifndef RAPIDLOGGER_TIME_H
+#define RAPIDLOGGER_TIME_H
 
 #include<string>
 #include<sstream>
@@ -30,4 +30,4 @@ namespace rapidlogger
     };
 }
 
-#endif // MOCORES_TIME_H
+#endif // RAPIDLOGGER_TIME_H
