@@ -50,3 +50,5 @@ Temporary Items
 #vs
 /src/Debug
 /src/Release
+/src/x64/Release
+.obj

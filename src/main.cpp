@@ -5,15 +5,21 @@ int main()
 {
 	//开启错误日志
 	rapidlogger::Logger * errlog = &rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
-	errlog->configure();
+	//errlog->configure();
 	errlog->setName("errlog");
+	//errlog->setFilter(rapidlogger::LogFilter(rapidlogger::LevelID::WARN));
 	errlog->setAppender(rapidlogger::FileAppender("mylog.log"));
-	errlog->setLayout(rapidlogger::LogLayout("%t\t[%p]\t%m%n"));
+	//errlog->setLayout(rapidlogger::LogLayout("[%p]\t%m%l%n"));
 	errlog->start();
 
 	//日志输出测试
+	long long i = 1e6;
 	clock_t start = clock();
-	errlog->info("LogQuickTest:id=1 time:" + std::to_string(clock() - start));
+	while (i-->0)
+	{
+		errlog->logInfo("Hello 0123456789 abcdefghijklmnopqrstuvwxyz"+std::to_string(i));
+	}
 	std::cout << "Time used:" << clock() - start << std::endl;
+	system("pause");
 	return 0;
 }

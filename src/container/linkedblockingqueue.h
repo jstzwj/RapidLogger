@@ -79,6 +79,11 @@ namespace rapidlogger
 				return false;
 			}
 		}
+		int size()
+		{
+			std::unique_lock<std::mutex> lock(mtx);
+			return data.size();
+		}
     protected:
         std::mutex mtx;
         std::condition_variable notEmpty;

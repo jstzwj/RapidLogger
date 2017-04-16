@@ -26,6 +26,7 @@ namespace rapidlogger
         static std::string getTime(const std::string& format);
         static std::string getTime();
         static int64_t GetSysTimeMicros();
+		static int64_t Time::GetMicros();
     };
 }
 

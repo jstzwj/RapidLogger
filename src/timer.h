@@ -83,9 +83,9 @@ namespace rapidlogger
 	{
 	public:
 		TimerTask() :running(false), interval(1000){}
-		~TimerTask() 
+		virtual ~TimerTask() 
 		{
-			delete loop;
+			end();
 		}
 		void add(const Timer & timer) 
 		{
@@ -103,12 +103,23 @@ namespace rapidlogger
 			running = true;
 			loop=new std::thread(std::bind(&TimerTask::timerLoop, this));
 		}
+		void end()
+		{
+			{
+				std::unique_lock<std::mutex> lock(mtx);
+				running = false;
+			}
+			assert(loop != nullptr);
+			loop->join();
+			delete loop;
+			loop = nullptr;
+		}
 		void timerLoop()
 		{
 			while (running==true)
 			{
 				std::unique_lock<std::mutex> lock(mtx);
-				if (timer_list.front().getStopTime()>Timestamp::now())
+				if (!timer_list.empty()&&timer_list.front().getStopTime()<=Timestamp::now())
 				{
 					Timer t = timer_list.front();
 					t.run();
@@ -138,9 +149,10 @@ namespace rapidlogger
 				if (i->getStopTime()>=timer.getStopTime())
 				{
 					timer_list.insert(i,timer);
-					break;
+					return;
 				}
 			}
+			timer_list.insert(i, timer);
 		}
 		void delTimer(uint64_t id)
 		{

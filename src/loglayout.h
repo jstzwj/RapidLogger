@@ -26,7 +26,7 @@ namespace rapidlogger
     {
     public:
         using TimePoint=std::chrono::time_point<std::chrono::system_clock, std::chrono::nanoseconds>;
-        LogLayout()=default;
+		LogLayout() :layout("thread_id:%t\t[%p]\ttime:%d\tdetail:%l\tmsg:%m%n") {}
         LogLayout(const std::string & _layout):layout(_layout){}
         void setStartTime(const TimePoint& start)
         {
@@ -61,6 +61,9 @@ namespace rapidlogger
 					case 'n':
 						result.append(msg.getNewLine());
 						break;
+					case 'l':
+						result.append(std::string()+msg.getFunctionName()+"("+msg.getFileName()+":"+msg.getLineNum()+")");
+						break;
 					case 'd':
 					{
 						i++;
@@ -81,7 +84,7 @@ namespace rapidlogger
 							}
 							else
 							{
-								result.push_back(layout[i]);
+								result.append(msg.getTime());
 							}
 						}
 					}

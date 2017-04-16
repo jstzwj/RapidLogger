@@ -54,6 +54,12 @@
     <ClInclude Include="StringBuffer.h">
       <Filter>Header Files\container</Filter>
     </ClInclude>
+    <ClInclude Include="LogStream.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

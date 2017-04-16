@@ -32,7 +32,10 @@ namespace rapidlogger
     #endif
         return 0;
     }
-
+	int64_t Time::GetMicros()
+	{
+		return GetSysTimeMicros() % 1000000;
+	}
     int Time::getYear()
     {
         std::time_t timep;
@@ -95,20 +98,21 @@ namespace rapidlogger
 		std::stringstream stream;
 
         while(result.find("%SSS")!=std::string::npos)
-            result.replace(result.find("%SSS"), 4, std::to_string(Time::GetSysTimeMicros()));
+            result.replace(result.find("%SSS"), 4, std::to_string(Time::GetMicros()));
 		stream<<std::put_time(p, result.c_str());
         return stream.str();
     }
 
     std::string Time::getTime()
     {
-        std::stringstream resultstream;
+        std::string result;
         std::time_t timep;
         std::tm *p;
         std::time(&timep);
         p = std::gmtime(&timep);
-        resultstream<<(1900+(p->tm_year))<<"-"<<(1+(p->tm_mon))<<"-"<<(p->tm_mday)<<"  "
-                <<(p->tm_hour)<<":"<<(p->tm_min)<<":"<<(p->tm_sec)<<"  "<<Time::GetSysTimeMicros()<<" ";
-        return resultstream.str();
+		result = std::to_string(1900 + (p->tm_year))+ "-"+std::to_string(1 + (p->tm_mon))+
+			"-"+std::to_string(p->tm_mday)+" "+std::to_string(p->tm_hour)+":"+std::to_string(p->tm_min)+
+			":"+std::to_string(p->tm_sec)+ "."+ std::to_string(Time::GetMicros());
+        return result;
     }
 }
