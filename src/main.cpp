@@ -1,17 +1,19 @@
 #include"Logger.h"
 #include"LogStream.h"
-#include"Singleton.h"
 
-int main()
+
+int main(int argc,char **argv)
 {
 	//开启错误日志
-	rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
+	//rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
 	//errlog->configure();
-	errlog.setName("errlog");
+	//初始化写法
+	rapidlogger::Logger & errlog = rapidlogger::initRapidLogger(argv[0]);
+	//errlog.setName("errlog");
 	//errlog->setFilter(rapidlogger::LogFilter(rapidlogger::LevelID::WARN));
-	errlog.setAppender(rapidlogger::FileAppender("mylog.log"));
+	errlog.setAppender(rapidlogger::RollingFileAppender("mylog.log",1000000));
 	//errlog->setLayout(rapidlogger::LogLayout("[%p]\t%m%l%n"));
-	errlog.start();
+	//errlog.start();
 
 	//日志输出测试
 	long long i = 1e6;

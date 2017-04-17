@@ -29,6 +29,7 @@
 #include"LogAppender.h"
 #include"LogFilter.h"
 #include"Timer.h"
+#include"Singleton.h"
 #include"container/linkedblockingqueue.h"
 
 namespace rapidlogger
@@ -43,6 +44,8 @@ namespace rapidlogger
 #define logAll(msg) all(msg,__FILE__,__FUNCTION__,__LINE__)
 #define logCustomer(msg,level) costumer(msg,__FILE__,__FUNCTION__,__LINE__,level)
 
+
+#define LOGGER_BUFFER_SIZE 4*1024*1024
     /*!
      * \brief The Logger class
      */
@@ -180,7 +183,7 @@ namespace rapidlogger
         {
             try
             {
-              buffer.reserve(1024*1024*4);
+              buffer.reserve(LOGGER_BUFFER_SIZE);
 			  clock_t last_time = clock();
               while (running||log_queue.size()!=0)
               {
@@ -195,7 +198,7 @@ namespace rapidlogger
 				  std::string eachmsg;
 				  if(log_queue.poll(eachmsg)==true)
 				  {
-					  if (buffer.length()>1024 * 1024 * 3)
+					  if (buffer.length()>LOGGER_BUFFER_SIZE*0.8)
 					  {
 						  appender->append(buffer);
 						  appender->flush();
@@ -231,6 +234,14 @@ namespace rapidlogger
         AppenderPtr appender;
 		LogFilter filter;
     };
+
+	Logger & initRapidLogger(char *argv)
+	{
+		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
+		result.setName(argv);
+		result.start();
+		return result;
+	}
 }
 
 

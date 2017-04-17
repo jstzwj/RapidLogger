@@ -190,7 +190,7 @@ namespace rapidlogger
 		{
 			assert(fstream == nullptr);
 			//record current day
-			cur_path = getPathWithoutSuffix(path) + Time::getTime() + getPathSuffix(path);
+			cur_path = getPathWithoutSuffix(path) + Time::getTime("%y-%m-%d %H.%M.%S") + getPathSuffix(path);
 			fstream = new std::ofstream(cur_path, std::ios::out | std::ios::app);
 			if (fstream->good())
 			{
