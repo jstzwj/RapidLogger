@@ -18,7 +18,7 @@ namespace rapidlogger
 #define info_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::InfoLevel())
 #define debug_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::DebugLevel())
 #define all_out(logger) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,::rapidlogger::AllLevel())
-#define custome_out(logger,level) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,level)
+#define custom_out(logger,level) LoggerStream(logger,__FILE__,__FUNCTION__,__LINE__,level)
 
 	class LoggerStream
 	{
@@ -128,6 +128,26 @@ namespace rapidlogger
 		const LogLevel& level;
 		std::string buffer;
 		Logger &logger;
+	};
+
+	class LoggerStreamFake
+	{
+		LoggerStreamFake& operator<<(bool v){return *this;}
+		LoggerStreamFake& operator<<(short n) { return *this; }
+		LoggerStreamFake& operator<<(unsigned short n) { return *this; }
+		LoggerStreamFake& operator<<(int n) { return *this; }
+		LoggerStreamFake& operator<<(unsigned int n) { return *this; }
+		LoggerStreamFake& operator<<(long n) { return *this; }
+		LoggerStreamFake& operator<<(unsigned long n) { return *this; }
+		LoggerStreamFake& operator<<(long long n) { return *this; }
+		LoggerStreamFake& operator<<(unsigned long long n) { return *this; }
+		LoggerStreamFake& operator<<(float n) { return *this; }
+		LoggerStreamFake& operator<<(double n) { return *this; }
+		LoggerStreamFake& operator<<(char c) { return *this; }
+		LoggerStreamFake& operator<<(const char* str) { return *this; }
+		LoggerStreamFake& operator<<(const unsigned char* str) { return *this; }
+		LoggerStreamFake& operator<<(const std::string& str) { return *this; }
+
 	};
 }
 

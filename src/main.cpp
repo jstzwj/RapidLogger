@@ -1,5 +1,6 @@
 #include"Logger.h"
 #include"LogStream.h"
+#include"LogCondition.h"
 
 
 int main(int argc,char **argv)

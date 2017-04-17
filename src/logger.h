@@ -242,6 +242,17 @@ namespace rapidlogger
 		result.start();
 		return result;
 	}
+
+	void closeRapidLogger()
+	{
+		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
+		result.end();
+	}
+	Logger & getLogger()
+	{
+		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
+		return result;
+	}
 }
 
 

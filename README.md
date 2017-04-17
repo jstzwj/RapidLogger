@@ -14,22 +14,18 @@ These compilers which have been tested are shown in the following list.
 The RapidLogger library is a header-only library.Just copy the folder in your project.
 
 # Usage
-Use RapidLogger in five lines.
+Use RapidLogger in three lines.
 
 ~~~cpp
 #include"Logger.h"
 #include"LogStream.h"
-#include"Singleton.h"
+using namespace rapidlogger;
 int main()
 {
-  //Create a singleton logger
-	rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
-  //Set logger name
-	errlog.setName("errlog");
+  //Init a singleton logger
+	Logger & errlog = initRapidLogger(argv[0]);
   //Set log target
-	errlog.setAppender(rapidlogger::FileAppender("mylog.log"));
-  //Start async logger
-	errlog.start();
+	errlog.setAppender(FileAppender("mylog.log"));
   //Put a log
 	info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz";
 	return 0;

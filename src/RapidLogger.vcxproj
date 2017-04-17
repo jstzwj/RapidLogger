@@ -109,6 +109,7 @@
     <ClInclude Include="container\arrayblockingqueue.h" />
     <ClInclude Include="container\linkedblockingqueue.h" />
     <ClInclude Include="LogAppender.h" />
+    <ClInclude Include="LogCondition.h" />
     <ClInclude Include="LogFilter.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="LoggerTime.h" />
