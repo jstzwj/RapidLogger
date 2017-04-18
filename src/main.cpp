@@ -17,11 +17,12 @@ int main(int argc,char **argv)
 	//errlog.start();
 
 	//ÈÕÖ¾Êä³ö²âÊÔ
-	long long i = 1e6;
+	long long i = 1e5;
 	clock_t start = clock();
 	while (i-->0)
 	{
 		rapidlogger::info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
+		rapidlogger::LOG_IF(errlog, rapidlogger::InfoLevel(),0) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz" << i;
 	}
 	std::cout << "Time used:" << clock() - start << std::endl;
 	system("pause");
