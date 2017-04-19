@@ -9,7 +9,9 @@ int main(int argc,char **argv)
 	//rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
 	//errlog->configure();
 	//³õÊ¼»¯Ð´·¨
-	rapidlogger::initRapidLogger(argv[0], rapidlogger::RollingFileAppender("mylog.log", 1000000));
+	rapidlogger::initRapidLogger(argv[0],
+		rapidlogger::RollingFileAppender("mylog.log", 1000000)
+		,rapidlogger::LogLayout("thread_id:%t\t[%p]\ttime:%d\tdetail:%l\tmsg:%m%n"));
 	//errlog.setName("errlog");
 	//errlog->setFilter(rapidlogger::LogFilter(rapidlogger::LevelID::WARN));
 	//errlog.setAppender(rapidlogger::RollingFileAppender("mylog.log",1000000));

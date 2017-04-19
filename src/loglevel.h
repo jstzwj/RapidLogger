@@ -19,6 +19,15 @@ namespace rapidlogger
 		ALL=-2147483647,
 		CUSTOMER=20050
 	};
+
+#define LEVEL_OFF OffLevel()
+#define LEVEL_FATAL FatalLevel()
+#define LEVEL_ERROR ErrorLevel()
+#define LEVEL_WARN WarnLevel()
+#define LEVEL_INFO InfoLevel()
+#define LEVEL_DEBUG DebugLevel()
+#define LEVEL_ALL AllLevel()
+#define LEVEL_CUSTOM CustomerLevel()
 		
 
     class LogLevel

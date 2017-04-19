@@ -59,9 +59,10 @@ namespace rapidlogger
      *  \details ConsoleAppender（控制台），
      *           FileAppender（文件），
      *           DailyRollingFileAppender（每天产生一个日志文件），
-	 *           以下暂时不支持
      *           RollingFileAppender（文件大小到达指定尺寸的时候产生一个新的文件），
+	 *           以下暂时不支持
      *           WriterAppender（将日志信息以流格式发送到任意指定的地方）
+	 *			 彩色输出
      */
     class ConsoleAppender:public LogAppender
     {
