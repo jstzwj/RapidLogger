@@ -9,10 +9,10 @@ int main(int argc,char **argv)
 	//rapidlogger::Logger & errlog = rapidlogger::Singleton<rapidlogger::Logger>::getInstance();
 	//errlog->configure();
 	//³õÊ¼»¯Ð´·¨
-	rapidlogger::Logger & errlog = rapidlogger::initRapidLogger(argv[0]);
+	rapidlogger::initRapidLogger(argv[0], rapidlogger::RollingFileAppender("mylog.log", 1000000));
 	//errlog.setName("errlog");
 	//errlog->setFilter(rapidlogger::LogFilter(rapidlogger::LevelID::WARN));
-	errlog.setAppender(rapidlogger::RollingFileAppender("mylog.log",1000000));
+	//errlog.setAppender(rapidlogger::RollingFileAppender("mylog.log",1000000));
 	//errlog->setLayout(rapidlogger::LogLayout("[%p]\t%m%l%n"));
 	//errlog.start();
 
@@ -21,8 +21,8 @@ int main(int argc,char **argv)
 	clock_t start = clock();
 	while (i-->0)
 	{
-		rapidlogger::info_out(errlog) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
-		rapidlogger::LOG_IF(errlog, rapidlogger::InfoLevel(),0) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz" << i;
+		rapidlogger::info_out_d<< "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
+		//rapidlogger::LOG_IF(errlog, rapidlogger::InfoLevel(),0) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz" << i;
 	}
 	std::cout << "Time used:" << clock() - start << std::endl;
 	system("pause");

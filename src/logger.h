@@ -44,6 +44,14 @@ namespace rapidlogger
 #define logAll(msg) all(msg,__FILE__,__FUNCTION__,__LINE__)
 #define logCustomer(msg,level) costumer(msg,__FILE__,__FUNCTION__,__LINE__,level)
 
+#define logOff_d(msg) getLogger().off(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logFatal_d(msg) getLogger().fatal(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logError_d(msg) getLogger().error(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logWarn_d(msg) getLogger().warn(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logInfo_d(msg) getLogger().info(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logDebug_d(msg) getLogger().debug(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logAll_d(msg) getLogger().all(msg,__FILE__,__FUNCTION__,__LINE__)
+#define logCustomer_d(msg,level) getLogger().costumer(msg,__FILE__,__FUNCTION__,__LINE__,level)
 
 #define LOGGER_BUFFER_SIZE 4*1024*1024
     /*!
@@ -234,11 +242,44 @@ namespace rapidlogger
         AppenderPtr appender;
 		LogFilter filter;
     };
+	template<int num>
+	class InstanceNum
+	{
+	public:
+		constexpr static int value = num;
+		using type = InstanceNum<num>;
+	};
 
 	Logger & initRapidLogger(char *argv)
 	{
-		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
+		Logger& result = Singleton<std::pair<InstanceNum<0>, rapidlogger::Logger> >::getInstance().second;
 		result.setName(argv);
+		result.start();
+		return result;
+	}
+	template<class AppenderType>
+	Logger & initRapidLogger(char *argv, const AppenderType &appender)
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<0>,rapidlogger::Logger> >::getInstance().second;
+		result.setName(argv);
+		result.setAppender(appender);
+		result.start();
+		return result;
+	}
+	template<int instance>
+	Logger & initRapidLogger(char *argv)
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<instance>, rapidlogger::Logger> >::getInstance().second;
+		result.setName(argv);
+		result.start();
+		return result;
+	}
+	template<class AppenderType,int instance>
+	Logger & initRapidLogger(char *argv, const AppenderType &appender)
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<instance>, rapidlogger::Logger> >::getInstance().second;
+		result.setName(argv);
+		result.setAppender(appender);
 		result.start();
 		return result;
 	}
@@ -248,9 +289,16 @@ namespace rapidlogger
 		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
 		result.end();
 	}
+	
 	Logger & getLogger()
 	{
-		Logger& result = Singleton<rapidlogger::Logger>::getInstance();
+		Logger& result = Singleton<std::pair<InstanceNum<0>, rapidlogger::Logger> >::getInstance().second;
+		return result;
+	}
+	template<int instance>
+	Logger & getLogger()
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<instance>, rapidlogger::Logger> >::getInstance().second;
 		return result;
 	}
 }
