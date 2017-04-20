@@ -11,7 +11,8 @@ int main(int argc,char **argv)
 	//³õÊ¼»¯Ð´·¨
 	rapidlogger::initRapidLogger(argv[0],
 		rapidlogger::RollingFileAppender("mylog.log", 1000000)
-		,rapidlogger::LogLayout("thread_id:%t\t[%p]\ttime:%d\tdetail:%l\tmsg:%m%n"));
+		,rapidlogger::LogLayout("thread_id:%t\t[%p]\ttime:%d\tdetail:%l\tmsg:%m%n")
+		, rapidlogger::LogFilter(1000));
 	//errlog.setName("errlog");
 	//errlog->setFilter(rapidlogger::LogFilter(rapidlogger::LevelID::WARN));
 	//errlog.setAppender(rapidlogger::RollingFileAppender("mylog.log",1000000));

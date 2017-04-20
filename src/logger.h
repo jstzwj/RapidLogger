@@ -295,6 +295,18 @@ namespace rapidlogger
 		result.start();
 		return result;
 	}
+	template<class AppenderType>
+	Logger & initRapidLogger(char *argv, const AppenderType &appender, const LogLayout & layout,const LogFilter & filter)
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<0>, rapidlogger::Logger> >::getInstance().second;
+		result.setName(argv);
+		result.clearAppender();
+		result.addAppender(appender);
+		result.setLayout(layout);
+		result.setFilter(filter);
+		result.start();
+		return result;
+	}
 
 	template<int instance>
 	Logger & initRapidLogger(char *argv)
@@ -322,6 +334,18 @@ namespace rapidlogger
 		result.clearAppender();
 		result.addAppender(appender);
 		result.setLayout(layout);
+		result.start();
+		return result;
+	}
+	template<class AppenderType, int instance>
+	Logger & initRapidLogger(char *argv, const AppenderType &appender, const LogLayout & layout,const LogFilter & filter)
+	{
+		Logger& result = Singleton<std::pair<InstanceNum<instance>, rapidlogger::Logger> >::getInstance().second;
+		result.setName(argv);
+		result.clearAppender();
+		result.addAppender(appender);
+		result.setLayout(layout);
+		result.setFilter(filter);
 		result.start();
 		return result;
 	}

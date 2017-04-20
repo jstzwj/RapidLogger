@@ -25,7 +25,10 @@ int main(int argc,char **argv)
   //Init a singleton logger
   	rapidlogger::initRapidLogger(argv[0], rapidlogger::RollingFileAppender("mylog.log", 1000000));
   //Put a log
-	info_out_d<< "Hello 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
+	info_out_d<< "Hello world 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
 	return 0;
 }
 ~~~
+
+
+
