@@ -10,7 +10,7 @@ int main(int argc,char **argv)
 	//errlog->configure();
 	//≥ı ºªØ–¥∑®
 	rapidlogger::initRapidLogger(argv[0],
-		rapidlogger::RollingFileAppender("mylog.log", 1000000)
+		rapidlogger::FileAppender("mylog.log")
 		,rapidlogger::LogLayout("thread_id:%t\t[%p]\ttime:%d\tdetail:%l\tmsg:%m%n")
 		, rapidlogger::LogFilter(1000));
 	//errlog.setName("errlog");
