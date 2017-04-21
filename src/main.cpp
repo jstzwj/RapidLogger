@@ -1,7 +1,5 @@
-#include"Logger.h"
-#include"LogStream.h"
-#include"LogCondition.h"
 
+#include"rapidlogger.h"
 
 int main(int argc,char **argv)
 {

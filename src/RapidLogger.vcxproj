@@ -122,6 +122,7 @@
     <ClInclude Include="LogMsg.h" />
     <ClInclude Include="LogStream.h" />
     <ClInclude Include="platform.h" />
+    <ClInclude Include="rapidlogger.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="StringBuffer.h" />
     <ClInclude Include="Timer.h" />
