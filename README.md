@@ -84,8 +84,66 @@ The name can be used in log layout.
  void setFilter(const LogFilter& _filter);
 ~~~
 
+## Output logs
+
+~~~cpp
+ logOff_d(msg)
+ logFatal_d(msg)
+ logError_d(msg)
+ logWarn_d(msg)
+ logInfo_d(msg)
+ logDebug_d(msg)
+ logAll_d(msg)
+ logCustomer_d(msg,level)
+~~~
+
+
+## C++ stream style logs output
+
+~~~cpp
+ off_out_d
+ fatal_out_d
+ error_out_d
+ warn_out_d
+ info_out_d
+ debug_out_d
+ all_out_d
+ custom_out_d(level)
+~~~
+
+Take warning for example.
+~~~cpp
+ warn_out_d<<"This is a warning.";
+~~~
+
+## About log layout
+
+
+## About appenders
+
+
+## About log level
+
+## About filter
+
+## Conditional logging macros
+
+
 
 # Advanced usage
 
+## Multiple loggers
 
+## Multiple appenders
+
+## Custom data type
+
+
+## Custom log level
+
+## Custom appender
+
+
+
+#Performance
 
