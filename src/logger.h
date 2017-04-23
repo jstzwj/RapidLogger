@@ -70,32 +70,32 @@ namespace rapidlogger
 		Logger operator =(const Logger &other) = delete;
 		void setName(const char * name)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			logger_name = name;
 		}
 		void setLayout(const LogLayout& _layout)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			layout = _layout;
 		}
 		void setFilter(const LogFilter& _filter)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			filter = _filter;
 		}
 		bool configure()
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			return true;
 		}
 		bool configureFromMem(const char *)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			return true;
 		}
 		bool configureFromFile(const char *)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			return true;
 		}
 		void log(const ::std::string & msg, const char * filename, const char * function, int line, const LogLevel& level)
@@ -160,7 +160,7 @@ namespace rapidlogger
 		void end()
 		{
 			{
-				std::unique_lock<std::mutex> lock(queue_mtx);
+				std::unique_lock<std::mutex> lock(mtx);
 				running = false;
 			}
 			assert(log_thread != nullptr);
@@ -184,17 +184,17 @@ namespace rapidlogger
 		template<class T>
 		void addAppender(const T& app)
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			appender.push_back(std::make_shared<T>(app));
 		}
 		void removeLastAppender()
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			appender.pop_back();
 		}
 		void clearAppender()
 		{
-			assert(running == false);
+			std::unique_lock<std::mutex> lock(mtx);
 			appender.clear();
 		}
 	protected:
@@ -209,6 +209,7 @@ namespace rapidlogger
 					clock_t now_time = clock();
 					if (now_time - last_time >= 3 * 1000)
 					{
+						std::unique_lock<std::mutex> lock(mtx);
 						for (auto &each : appender)
 						{
 							each->append(buffer);
@@ -222,6 +223,7 @@ namespace rapidlogger
 					{
 						if (buffer.length() > LOGGER_BUFFER_SIZE*0.8)
 						{
+							std::unique_lock<std::mutex> lock(mtx);
 							for (auto &each : appender)
 							{
 								each->append(buffer);
@@ -250,7 +252,7 @@ namespace rapidlogger
 	protected:
 		std::string logger_name;
 		LinkedBlockingQueue<std::string> log_queue;
-		std::mutex queue_mtx;
+		std::mutex mtx;
 		bool running;
 		std::string buffer;
 		TimePoint start_time;

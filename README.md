@@ -118,11 +118,52 @@ Take warning for example.
 
 ## About log layout
 
+The LogLayout class
+%m Output the message.
+%p Output the log level, such as WARN, FATAL.
+%r Put the microsecond from the application initialization.
+%t Put the thread id.
+%n Print a newline character. "\r\n" under Windows. "\n" under Unix.
+%d Print the log time. Default format is "%Y-%m-%d %H:%M:%S.%SSS". The format can be defined by user. %d{%Y %m %d %H:%M:%S,%SSS}. It will output "2002 10 18 22:10:28,921".
+%l Print the log location in the source including function name, thread id and line number. For example, main(TestLog.cpp:10).
 
 ## About appenders
+* ConsoleAppender
+* FileAppender
+* DailyRollingFileAppender
+* RollingFileAppender
+
 
 
 ## About log level
+Built-in level
+~~~cpp
+#define MAXLEVEL 2147483647
+#define MINLEVEL -2147483647
+enum LevelID
+{
+	OFF=2147483647,
+	FATAL=50000,
+	ERROR=40000,
+	WARN=30000,
+	INFO=20000,
+	DEBUG=10000,
+	ALL=-2147483647,
+	CUSTOMER=20050
+};
+
+#define LEVEL_OFF OffLevel()
+#define LEVEL_FATAL FatalLevel()
+#define LEVEL_ERROR ErrorLevel()
+#define LEVEL_WARN WarnLevel()
+#define LEVEL_INFO InfoLevel()
+#define LEVEL_DEBUG DebugLevel()
+#define LEVEL_ALL AllLevel()
+#define LEVEL_CUSTOM CustomerLevel()
+
+~~~
+
+
 
 ## About filter
 
