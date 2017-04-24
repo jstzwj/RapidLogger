@@ -167,13 +167,32 @@ enum LevelID
 
 ## About filter
 
-## Conditional logging macros
+You can set a level range for the logs you want.
+~~~cpp
 
+LogFilter();	//MINLEVEL to MAXLEVEL
+LogFilter(int _start);	//start to MAXLEVEL including start
+LogFilter(int _start,int _finish);	//start to finish including start and finish
+
+~~~
+
+
+## Conditional logging macros
+~~~cpp
+/*
+Logger will print a log when condition is true
+*/
+LOG_IF(errlog, LEVEL_INFO,condition) << "Hello 0123456789 abcdefghijklmnopqrstuvwxyz" << i;
+
+
+~~~
 
 
 # Advanced usage
 
 ## Multiple loggers
+
+
 
 ## Multiple appenders
 
