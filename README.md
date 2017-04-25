@@ -191,10 +191,26 @@ LOG_IF(errlog, LEVEL_INFO,condition) << "Hello 0123456789 abcdefghijklmnopqrstuv
 # Advanced usage
 
 ## Multiple loggers
+~~~cpp
+//Init a singleton logger which instance id is 1.
+  	initRapidLogger<1>(argv[0], FileAppender("mylog.log"));
+//Put a log by logger 1.
+	getLogger<1>().info_out<< "Hello world 0123456789 abcdefghijklmnopqrstuvwxyz"<<i;
 
+~~~
+The default logger id is 0;
 
 
 ## Multiple appenders
+~~~cpp
+template<class T>
+void addAppender(const T& app);
+void removeLastAppender();
+void clearAppender();
+
+~~~
+
+
 
 ## Custom data type
 
