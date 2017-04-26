@@ -213,11 +213,39 @@ void clearAppender();
 
 
 ## Custom data type
+~~~cpp
 
+LoggerStream& operator<<(LoggerStream& stream,T n);
+
+~~~
 
 ## Custom log level
+~~~cpp
+class MyCustomerLevel :public LogLevel
+{
+public:
+	MyCustomerLevel() :LogLevel("MYCUSTOMER", 20051) {}
+};
+
+~~~
 
 ## Custom appender
+Override all of the virtual member function in LogAppender.
+~~~cpp
+
+class LogAppender
+{
+public:
+        LogAppender()=default;
+        /*inner function*/
+        virtual int open()=0;
+        /*inner function*/
+        virtual void close()=0;
+        virtual void append(const std::string & str)=0;
+        virtual void flush()=0;
+};
+
+~~~
 
 
 
